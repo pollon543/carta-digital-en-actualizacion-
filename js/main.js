@@ -255,12 +255,31 @@ function closeCategoryModal() {
 // Cargar productos iniciales
 document.addEventListener('DOMContentLoaded', () => {
     const productsGrid = document.getElementById('productsGrid');
+    const goHome = document.getElementById('goHome');
+
     const goToOrdersBtn = document.getElementById('goToOrders');
     
     // Renderizar productos iniciales
     renderProducts(currentCategory, productsGrid, ITEMS_PER_PAGE);
     updateSectionTitle(currentCategory);
     setActiveCategory(currentCategory);
+    // ============================================
+  // En celular: centrar "Todo el Menú" al cargar
+   // ============================================
+   const categoriesScroll = document.getElementById('categoriesScroll');
+   const todoMenuCard = document.querySelector('.category-card[data-category="todo-menu"]');
+
+   function centerTodoMenuOnMobile() {
+      if (!categoriesScroll || !todoMenuCard) return;
+      if (window.matchMedia('(max-width: 768px)').matches) {
+          // centra la tarjeta en el carrusel
+          todoMenuCard.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      }
+   }
+
+      // Ejecutar al cargar (con pequeño delay para asegurar render)
+    setTimeout(centerTodoMenuOnMobile, 150);
+
     
     // Botón "Ir a la página de pedidos"
     if (goToOrdersBtn) {
@@ -387,5 +406,35 @@ if (menuToggle && hamburgerMenu) {
         if (e.key === 'Escape') closeHamburger();
     });
 }
+
+
+    // ============================================
+// VOLVER AL INICIO AL HACER CLICK EN LOGO
+// ============================================
+if (goHome) {
+    goHome.addEventListener('click', () => {
+
+        // Volver a categoría principal
+        currentCategory = "todo-menu";
+        renderProducts(currentCategory, productsGrid, ITEMS_PER_PAGE);
+        updateSectionTitle(currentCategory);
+        setActiveCategory(currentCategory);
+
+        // Cerrar modal si está abierto
+        closeCategoryModal();
+
+        // Cerrar menú hamburguesa si está abierto
+        if (hamburgerMenu) {
+            hamburgerMenu.classList.remove('open');
+        }
+
+        // Scroll suave arriba
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
 
 });
