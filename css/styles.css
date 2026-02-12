@@ -332,8 +332,15 @@ body {
   .category-image img {
     object-position: center;  /* ✅ centra el encuadre */
   }
+
+  .category-title {
+    font-size: 16px;
+    line-height: 1.15;
+    max-width: 100%;
+  }
     
 }
+
 
 
 .categories-scroll::-webkit-scrollbar {
