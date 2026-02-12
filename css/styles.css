@@ -131,10 +131,10 @@ body {
    ============================================ */
 .hamburger-menu {
     position: absolute;
-    top: 58px;                 /* debajo del header */
-    left: 50%;
+    top: 60px;                 /* debajo del header */
+    left: 85%;
     transform: translateX(-50%);
-    width: 220px;
+    width: 200px;
     background: #ffffff;
     border-radius: 4px;
     overflow: hidden;
