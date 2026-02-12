@@ -411,8 +411,12 @@ if (menuToggle && hamburgerMenu) {
     // ============================================
 // VOLVER AL INICIO AL HACER CLICK EN LOGO
 // ============================================
+// ============================================
+// VOLVER AL INICIO (LOGO / TÍTULO) - PC + CELULAR
+// ============================================
 if (goHome) {
-    goHome.addEventListener('click', () => {
+    const goHomeAction = (e) => {
+        e.preventDefault();
 
         // Volver a categoría principal
         currentCategory = "todo-menu";
@@ -424,17 +428,20 @@ if (goHome) {
         closeCategoryModal();
 
         // Cerrar menú hamburguesa si está abierto
-        if (hamburgerMenu) {
-            hamburgerMenu.classList.remove('open');
-        }
+        const hm = document.getElementById('hamburgerMenu');
+        if (hm) hm.classList.remove('open');
 
         // Scroll suave arriba
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    // ✅ Click normal (PC)
+    goHome.addEventListener('click', goHomeAction);
+
+    // ✅ Touch en celular (algunos móviles lo requieren)
+    goHome.addEventListener('touchstart', goHomeAction, { passive: false });
 }
+
 
 
 });
