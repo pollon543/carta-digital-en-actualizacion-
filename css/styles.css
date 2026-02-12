@@ -70,6 +70,11 @@ body {
     gap: 12px;
 }
 
+.header-logo {
+    cursor: pointer;   /* 👈 Hace que aparezca la manito */
+}
+
+
 .logo-circle {
     width: 50px;
     height: 50px;
@@ -167,7 +172,7 @@ body {
     border: none;
     padding: 12px 14px;
     font-size: 15px;
-    font-weight: 200;      /* 👈 MÁS GRUESO */
+    font-weight: 250;      /* 👈 MÁS GRUESO */
     letter-spacing: 0.5px; /* 👈 toque más profesional */
     color: #444343;
     border-bottom: 1px solid #e5e7eb;
@@ -277,11 +282,59 @@ body {
     display: flex;
     gap: 16px;
     overflow-x: auto;
-    padding: 0 20px;
+    padding: 0 24px 10px 24px;  /* 👈 espacio extra abajo y lados */
     scroll-behavior: smooth;
     scrollbar-width: thin;
     scrollbar-color: var(--color-primary) var(--color-darker);
 }
+
+/* ============================================
+   SCROLL SIEMPRE VISIBLE EN CELULAR
+   ============================================ */
+@media (max-width: 768px) {
+
+    .categories-scroll {
+        overflow-x: scroll;     /* fuerza scroll visible */
+        -webkit-overflow-scrolling: auto;
+    }
+
+    .categories-scroll::-webkit-scrollbar {
+        height: 6px;
+        display: block;
+    }
+
+    .categories-scroll::-webkit-scrollbar-thumb {
+        background: var(--color-primary);
+        border-radius: 4px;
+    }
+
+    .categories-scroll::-webkit-scrollbar-track {
+        background: var(--color-darker);
+    }
+    
+    
+  /* Carrusel centrado como la foto */
+  .categories-scroll {
+    scroll-snap-type: x mandatory;   /* ✅ hace que se “enganche” al centro */
+    padding: 0 18px 12px 18px;       /* espacio lateral para que “asomen” las de los lados */
+    gap: 14px;
+  }
+
+  /* Tarjetas: mismo tamaño, más angostas */
+  .category-card {
+    width: 240px;          /* ✅ más angosta (ajusta si quieres 220/230/250) */
+    min-width: 240px;      /* asegura mismo ancho */
+    height: 160px;         /* mantiene altura buena en celular */
+    scroll-snap-align: center; /* ✅ tarjeta se centra */
+  }
+
+  /* Centrar mejor la imagen dentro del cuadro */
+  .category-image img {
+    object-position: center;  /* ✅ centra el encuadre */
+  }
+    
+}
+
 
 .categories-scroll::-webkit-scrollbar {
     height: 8px;
