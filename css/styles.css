@@ -57,7 +57,12 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    position: relative; /* ✅ NUEVO: para ubicar el menú dropdown */
 }
+
+
+
 
 .header-logo {
     display: flex;
@@ -119,6 +124,50 @@ body {
     border-radius: 2px;
     transition: var(--transition);
 }
+
+
+/* ============================================
+   MENÚ HAMBURGUESA (DROPDOWN COMO LA FOTO)
+   ============================================ */
+.hamburger-menu {
+    position: absolute;
+    top: 58px;                 /* debajo del header */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    background: #ffffff;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,.35);
+    display: none;
+    z-index: 9999;
+}
+
+.hamburger-menu.open {
+    display: block;
+}
+
+.hamburger-item {
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: none;
+    padding: 10px 12px;
+    font-size: 14px;
+    color: #111827;
+    border-bottom: 1px solid #e5e7eb;
+    cursor: pointer;
+    outline: none;
+}
+
+.hamburger-item:last-child {
+    border-bottom: none;
+}
+
+.hamburger-item:hover {
+    background: #f3f4f6;
+}
+
 
 /* ============================================
    HERO SECTION

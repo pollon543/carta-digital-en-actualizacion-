@@ -86,7 +86,20 @@ const productsData = {
         { name: "Jugo de Naranja", description: "Jugo natural de naranja 500ml", price: 4.00, image: "https://images.unsplash.com/photo-1581006852262-e4307cf6283a?w=400&h=300&fit=crop", rating: 4 },
         { name: "Chicha Morada", description: "Chicha morada tradicional 500ml", price: 4.00, image: "https://images.unsplash.com/photo-1581006852262-e4307cf6283a?w=400&h=300&fit=crop", rating: 5 },
         { name: "Maracuyá", description: "Jugo de maracuyá 500ml", price: 4.00, image: "https://images.unsplash.com/photo-1581006852262-e4307cf6283a?w=400&h=300&fit=crop", rating: 4 }
+    ],
+        "descartables": [
+        { name: "Bolsa Kraft Grande", description: "Bolsa kraft resistente (grande)", price: 1.50, image: "https://images.unsplash.com/photo-1617221560709-18f5b41f9a12?w=400&h=300&fit=crop", rating: 5 },
+        { name: "Bolsa Kraft Mediana", description: "Bolsa kraft resistente (mediana)", price: 1.00, image: "https://images.unsplash.com/photo-1617221560709-18f5b41f9a12?w=400&h=300&fit=crop", rating: 5 },
+        { name: "Envase Térmico", description: "Envase para comida caliente", price: 2.00, image: "https://images.unsplash.com/photo-1600959907703-125ba1374a12?w=400&h=300&fit=crop", rating: 4 },
+        { name: "Caja para Pollo", description: "Caja especial para pollo", price: 2.50, image: "https://images.unsplash.com/photo-1604909052743-94d55bdac559?w=400&h=300&fit=crop", rating: 5 },
+        { name: "Vaso 500ml", description: "Vaso descartable 500ml", price: 0.80, image: "https://images.unsplash.com/photo-1528823872057-9c018a7f7d68?w=400&h=300&fit=crop", rating: 4 },
+        { name: "Tapa para Vaso", description: "Tapa descartable para vaso", price: 0.40, image: "https://images.unsplash.com/photo-1528823872057-9c018a7f7d68?w=400&h=300&fit=crop", rating: 4 },
+        { name: "Cubiertos (Set)", description: "Tenedor + cuchillo + cucharita", price: 0.90, image: "https://images.unsplash.com/photo-1541544741938-0af808871cc0?w=400&h=300&fit=crop", rating: 4 },
+        { name: "Servilletas (Pack)", description: "Pack de servilletas", price: 0.60, image: "https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=400&h=300&fit=crop", rating: 4 },
+        { name: "Salsa Extra (Envase)", description: "Envase pequeño para salsas", price: 0.50, image: "https://images.unsplash.com/photo-1583663848850-46af132dc08e?w=400&h=300&fit=crop", rating: 4 },
+        { name: "Papel Antigrasa", description: "Papel antigrasa para alimentos", price: 0.70, image: "https://images.unsplash.com/photo-1612204101341-0e2f03fbc0d8?w=400&h=300&fit=crop", rating: 5 }
     ]
+
 };
 
 // Combinar todos los productos para "Todo el Menú"
@@ -96,7 +109,8 @@ productsData["todo-menu"] = [
     ...productsData["ofertas-personales"],
     ...productsData["platos-extras"],
     ...productsData["agregados"],
-    ...productsData["bebidas"]
+    ...productsData["bebidas"],
+    ...productsData["descartables"]
 ];
 
 // ============================================
@@ -174,7 +188,9 @@ function updateSectionTitle(category) {
         "ofertas-personales": "Ofertas Personales",
         "platos-extras": "Platos Extras",
         "agregados": "Agregados",
-        "bebidas": "Bebidas"
+        "bebidas": "Bebidas",
+        "descartables": "Descartables"
+
     };
     
     const sectionTitle = document.getElementById('sectionTitle');
@@ -214,7 +230,9 @@ function openCategoryModal(category) {
         "ofertas-personales": "Ofertas Personales",
         "platos-extras": "Platos Extras",
         "agregados": "Agregados",
-        "bebidas": "Bebidas"
+        "bebidas": "Bebidas",
+        "descartables": "Descartables"
+
     };
     
     modalTitle.textContent = titles[category] || "Platos";
@@ -314,11 +332,60 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     // Menú toggle (para futuras funcionalidades)
-    const menuToggle = document.getElementById('menuToggle');
-    if (menuToggle) {
-        menuToggle.addEventListener('click', () => {
-            // Funcionalidad del menú hamburguesa (puede agregarse después)
-            console.log('Menú toggle clicked');
+    // ============================================
+// MENÚ HAMBURGUESA FUNCIONAL
+// ============================================
+const menuToggle = document.getElementById('menuToggle');
+const hamburgerMenu = document.getElementById('hamburgerMenu');
+
+function openHamburger() {
+    hamburgerMenu.classList.add('open');
+}
+
+function closeHamburger() {
+    hamburgerMenu.classList.remove('open');
+}
+
+function toggleHamburger() {
+    hamburgerMenu.classList.toggle('open');
+}
+
+if (menuToggle && hamburgerMenu) {
+    // Abrir/cerrar al hacer click en el icono
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleHamburger();
+    });
+
+    // Click en una categoría del menú
+    hamburgerMenu.querySelectorAll('.hamburger-item').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const category = btn.dataset.category;
+
+            currentCategory = category;
+            renderProducts(category, productsGrid, ITEMS_PER_PAGE);
+            updateSectionTitle(category);
+            setActiveCategory(category);
+
+            closeHamburger();
+
+            document.querySelector('.products-section').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
         });
-    }
+    });
+
+    // Cerrar si hago click fuera
+    document.addEventListener('click', (e) => {
+        const clickedOutside = !hamburgerMenu.contains(e.target) && !menuToggle.contains(e.target);
+        if (clickedOutside) closeHamburger();
+    });
+
+    // Cerrar con ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeHamburger();
+    });
+}
+
 });
