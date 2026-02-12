@@ -131,6 +131,19 @@ body {
 }
 
 
+/* ✅ Logo clickeable (especialmente en celular) */
+.header-logo {
+  cursor: pointer;
+  position: relative;
+  z-index: 10002;           /* por encima de overlays del header */
+  -webkit-tap-highlight-color: transparent;
+}
+
+.header-logo * {
+  pointer-events: none;     /* ✅ asegura que el click lo recibe el contenedor */
+}
+
+
 /* ============================================
    MENÚ HAMBURGUESA (DROPDOWN COMO LA FOTO)
    ============================================ */
@@ -232,23 +245,12 @@ body {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 15px;
     z-index: 2;
 }
 
-.delivery-banner {
-    background: var(--color-primary);
-    padding: 10px 16px;
-    border-radius: var(--border-radius);
-    display: inline-block;
-    max-width: fit-content;
-}
 
-.delivery-text {
-    color: var(--color-white);
-    font-weight: 600;
-    font-size: 14px;
-}
+
 
 .btn-orders {
     background: var(--color-secondary);
@@ -256,8 +258,8 @@ body {
     border: none;
     padding: 12px 24px;
     border-radius: var(--border-radius);
-    font-weight: 700;
-    font-size: 14px;
+    font-weight: 100;
+    font-size: 13px;
     cursor: pointer;
     transition: var(--transition);
     max-width: fit-content;
