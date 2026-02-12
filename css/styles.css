@@ -132,15 +132,27 @@ body {
 .hamburger-menu {
     position: absolute;
     top: 60px;                 /* debajo del header */
-    left: 85%;
+    left: 82%;
     transform: translateX(-50%);
-    width: 200px;
+    width: 180px;
     background: #ffffff;
     border-radius: 4px;
     overflow: hidden;
     box-shadow: 0 10px 25px rgba(0,0,0,.35);
     display: none;
     z-index: 9999;
+}
+
+/* ============================================
+   MENÚ HAMBURGUESA CENTRADO SOLO EN PC
+   ============================================ */
+@media (min-width: 992px) {
+    .hamburger-menu {
+        right: auto;               /* quitamos alineación derecha */
+        left: 98%;                  /* lo movemos al centro */
+         width: 220px;               
+        transform: translateX(-50%); /* centrado perfecto */
+    }
 }
 
 
@@ -153,13 +165,16 @@ body {
     text-align: left;
     background: transparent;
     border: none;
-    padding: 10px 12px;
-    font-size: 14px;
-    color: #111827;
+    padding: 12px 14px;
+    font-size: 15px;
+    font-weight: 200;      /* 👈 MÁS GRUESO */
+    letter-spacing: 0.5px; /* 👈 toque más profesional */
+    color: #444343;
     border-bottom: 1px solid #e5e7eb;
     cursor: pointer;
     outline: none;
 }
+
 
 .hamburger-item:last-child {
     border-bottom: none;
