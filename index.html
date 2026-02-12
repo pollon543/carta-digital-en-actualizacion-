@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta Digital - Pollería El Pollón</title>
+    <link rel="stylesheet" href="css/styles.css">
+ </head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="header-logo">
+                <div class="logo-circle">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="100" cy="80" r="35" fill="#FFA500" />
+                        <ellipse cx="100" cy="130" rx="45" ry="55" fill="#FFD700" />
+                        <circle cx="90" cy="75" r="5" fill="#000" />
+                        <circle cx="110" cy="75" r="5" fill="#000" />
+                        <path d="M 85 85 Q 100 90 115 85" stroke="#FF6347" stroke-width="3" fill="none" />
+       </svg>
+      </div>
+                <div class="header-text">
+                    <h1 class="header-title">Carta Digital</h1>
+                    <p class="header-subtitle">Pollería El Pollón</p>
+    </div>
+   </div>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+     </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=1200&h=600&fit=crop" alt="Pollo a la brasa" id="heroImg">
+            <div class="hero-overlay"></div>
+    </div>
+        <div class="hero-content">
+            <div class="delivery-banner">
+                <span class="delivery-text">DELIVERY - Pedidos con entrega a domicilio</span>
+   </div>
+            <button class="btn-orders" id="goToOrders">Ir a la página de pedidos</button>
+       </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section">
+        <div class="categories-scroll" id="categoriesScroll">
+            <div class="category-card" data-category="todo-menu">
+                <div class="category-image">
+                    <img src="https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=400&h=300&fit=crop" alt="Todo el Menú">
+      </div>
+                <div class="category-content">
+                    <h3 class="category-title">Todo el Menú</h3>
+                    <button class="btn-view-more">Ver todos</button>
+       </div>
+      </div>
+            <div class="category-card" data-category="ofertas-familiares">
+                <div class="category-image">
+                    <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=400&h=300&fit=crop" alt="Ofertas Familiares">
+       </div>
+                <div class="category-content">
+                    <h3 class="category-title">Ofertas Familiares</h3>
+                    <button class="btn-view-more">Ver más platos</button>
+       </div>
+      </div>
+            <div class="category-card" data-category="ofertas-dos">
+                <div class="category-image">
+                    <img src="https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=400&h=300&fit=crop" alt="Ofertas para Dos">
+       </div>
+                <div class="category-content">
+                    <h3 class="category-title">Ofertas para Dos</h3>
+                    <button class="btn-view-more">Ver más platos</button>
+       </div>
+      </div>
+            <div class="category-card" data-category="ofertas-personales">
+                <div class="category-image">
+                    <img src="https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=400&h=300&fit=crop" alt="Ofertas Personales">
+       </div>
+                <div class="category-content">
+                    <h3 class="category-title">Ofertas Personales</h3>
+                    <button class="btn-view-more">Ver más platos</button>
+       </div>
+      </div>
+            <div class="category-card" data-category="platos-extras">
+                <div class="category-image">
+                    <img src="https://images.unsplash.com/photo-1562967914-608f82629710?w=400&h=300&fit=crop" alt="Platos Extras">
+       </div>
+                <div class="category-content">
+                    <h3 class="category-title">Platos Extras</h3>
+                    <button class="btn-view-more">Ver más platos</button>
+       </div>
+      </div>
+            <div class="category-card" data-category="agregados">
+                <div class="category-image">
+                    <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=400&h=300&fit=crop" alt="Agregados">
+     </div>
+                <div class="category-content">
+                    <h3 class="category-title">Agregados</h3>
+                    <button class="btn-view-more">Ver más platos</button>
+    </div>
+   </div>
+            <div class="category-card" data-category="bebidas">
+                <div class="category-image">
+                    <img src="https://images.unsplash.com/photo-1581006852262-e4307cf6283a?w=400&h=300&fit=crop" alt="Bebidas">
+     </div>
+                <div class="category-content">
+                    <h3 class="category-title">Bebidas</h3>
+                    <button class="btn-view-more">Ver bebidas</button>
+    </div>
+   </div>
+     </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="container">
+            <h2 class="section-title" id="sectionTitle">Nuestro Menú</h2>
+            <div class="products-grid" id="productsGrid">
+                <!-- Los productos se cargarán aquí dinámicamente -->
+      </div>
+     </div>
+    </section>
+
+    <!-- Advertising Panel -->
+    <section class="advertising-panel">
+        <div class="container">
+            <div class="ad-content">
+                <h3 class="ad-title">¡Promociones Especiales!</h3>
+                <p class="ad-text">Disfruta de nuestras ofertas exclusivas todos los días</p>
+                <div class="ad-images">
+                    <div class="ad-item">
+                        <img src="https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=300&h=200&fit=crop" alt="Promoción 1">
+         </div>
+                    <div class="ad-item">
+                        <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=300&h=200&fit=crop" alt="Promoción 2">
+         </div>
+                    <div class="ad-item">
+                        <img src="https://images.unsplash.com/photo-1562967914-608f82629710?w=300&h=200&fit=crop" alt="Promoción 3">
+      </div>
+     </div>
+    </div>
+     </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p>📞 +56 9 0097 9202</p>
+                    <p>📍 Calle Vivar 1086, Iquique</p>
+    </div>
+                <div class="footer-section">
+                    <h3>Horarios</h3>
+                    <p>Lun-Dom: 11:00 AM - 11:00 PM</p>
+    </div>
+                <div class="footer-section">
+                    <h3>Síguenos</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">WhatsApp</a>
+     </div>
+    </div>
+   </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Pollería El Pollón - Todos los derechos reservados</p>
+    </div>
+   </div>
+  </footer>
+
+    <!-- Modal para ver todos los platos de una categoría -->
+    <div class="modal" id="categoryModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Platos</h2>
+                <button class="modal-close" id="modalClose">&times;</button>
+                    </div>
+            <div class="modal-body">
+                <div class="products-grid" id="modalProductsGrid">
+                    <!-- Los productos se cargarán aquí -->
+                        </div>
+                    </div>
+                        </div>
+                    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
